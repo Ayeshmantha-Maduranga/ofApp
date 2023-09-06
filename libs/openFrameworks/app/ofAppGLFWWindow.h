@@ -32,12 +32,7 @@ public:
 	:ofGLWindowSettings(settings){}
 #endif
 
-#ifdef TARGET_RASPBERRY_PI
-	int numSamples = 0;
-#else
 	int numSamples = 4;
-#endif
-
 	bool doubleBuffering = true;
 	int redBits = 8;
 	int greenBits = 8;

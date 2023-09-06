@@ -21,9 +21,9 @@ scripts/apothecary
 apps/*
 
 # rule to ignore compiled / downloaded libs
-/libs/*
-!/libs/openFrameworks
-!/libs/openFrameworksCompiled
+# /libs/*
+# !/libs/openFrameworks
+# !/libs/openFrameworksCompiled
 
 # also, see examples/.gitignore
 

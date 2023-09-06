@@ -25,7 +25,7 @@ using namespace std;
 
  */
 
-#if defined(TARGET_OPENGLES) & !defined(TARGET_EMSCRIPTEN)
+#ifdef TARGET_OPENGLES
 	bool ofFbo::bglFunctionsInitialized=false;
 	
 	typedef void (* glGenFramebuffersType) (GLsizei n, GLuint* framebuffers);
@@ -237,7 +237,7 @@ dirty(false),
 defaultTextureIndex(0),
 bIsAllocated(false)
 {
-#if defined(TARGET_OPENGLES) & !defined(TARGET_EMSCRIPTEN)
+#ifdef TARGET_OPENGLES
 	if(!bglFunctionsInitialized){
 		if(ofIsGLProgrammableRenderer()){
 			glGenFramebuffers = (glGenFramebuffersType)dlsym(RTLD_DEFAULT, "glGenFramebuffers");

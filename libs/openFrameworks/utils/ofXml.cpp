@@ -1,6 +1,5 @@
 #include "ofXml.h"
 #include "ofUtils.h"
-#include <clocale>
 
 using namespace std;
 
@@ -17,13 +16,11 @@ ofXml::ofXml(std::shared_ptr<pugi::xml_document> doc, const pugi::xml_node & xml
 
 bool ofXml::load(const std::filesystem::path & file){
 	auto auxDoc = std::make_shared<pugi::xml_document>();
-	auto res = auxDoc->load_file(ofToDataPath(file).c_str());
-	if( res ){
+	if(auxDoc->load_file(ofToDataPath(file).c_str())){
 		doc = auxDoc;
 		xml = doc->root();
 		return true;
 	}else{
-		ofLogWarning("ofXml") << "Cannot load file " << file << ":" << res.description();
 		return false;
 	}
 }
@@ -49,10 +46,7 @@ bool ofXml::parse(const std::string & xmlStr){
 
 bool ofXml::save(const std::filesystem::path & file) const{
 	if(xml == doc->root()){
-		auto res = doc->save_file(ofToDataPath(file).c_str());
-		ofLogVerbose("ofXml")<<"ofXML Save : "<< res;
-		ofLogVerbose("ofXml")<<this->toString();
-		return res;
+		return doc->save_file(ofToDataPath(file).c_str());
 	}else{
 		pugi::xml_document doc;
 		if(doc.append_copy(xml.root())){
@@ -207,7 +201,7 @@ bool ofXml::removeAttribute(ofXml::Attribute && attr){
 
 ofXml ofXml::findFirst(const std::string & path) const{
 	try{
-		return ofXml(doc, this->xml.select_node(path.c_str()).node());
+		return ofXml(doc, this->xml.select_single_node(path.c_str()).node());
 	}catch(pugi::xpath_exception & e){
 		return ofXml();
 	}
@@ -246,19 +240,11 @@ unsigned int ofXml::getUintValue() const{
 }
 
 float ofXml::getFloatValue() const{
-	auto loc = std::setlocale( LC_NUMERIC, NULL );
-	std::setlocale( LC_NUMERIC, "C" );
-	float f = this->xml.text().as_float();
-	std::setlocale( LC_NUMERIC, loc );
-	return f;
+	return this->xml.text().as_float();
 }
 
 double ofXml::getDoubleValue() const{
-	auto loc = std::setlocale( LC_NUMERIC, NULL );
-	std::setlocale( LC_NUMERIC, "C" );
-	float d = this->xml.text().as_double();
-	std::setlocale( LC_NUMERIC, loc );
-	return d;
+	return this->xml.text().as_double();
 }
 
 bool ofXml::getBoolValue() const{
@@ -298,19 +284,11 @@ unsigned int ofXml::Attribute::getUintValue() const{
 }
 
 float ofXml::Attribute::getFloatValue() const{
-	auto loc = std::setlocale( LC_NUMERIC, NULL );
-	std::setlocale( LC_NUMERIC, "C" );
-	float f = this->attr.as_float();
-	std::setlocale( LC_NUMERIC, loc );
-	return f;
+	return this->attr.as_float();
 }
 
 double ofXml::Attribute::getDoubleValue() const{
-	auto loc = std::setlocale( LC_NUMERIC, NULL );
-	std::setlocale( LC_NUMERIC, "C" );
-	float d = this->attr.as_double();
-	std::setlocale( LC_NUMERIC, loc );
-	return d;
+	return this->attr.as_double();
 }
 
 bool ofXml::Attribute::getBoolValue() const{

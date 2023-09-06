@@ -227,8 +227,7 @@ void ofNode::setOrientation(const glm::quat& q) {
 
 //----------------------------------------
 void ofNode::setOrientation(const glm::vec3& eulerAngles) {
-    glm::quat q(glm::radians(eulerAngles));
-    setOrientation(q);
+	setOrientation(glm::angleAxis(ofDegToRad(eulerAngles.x), glm::vec3(1, 0, 0)) * glm::angleAxis(ofDegToRad(eulerAngles.z), glm::vec3(0, 0, 1)) * glm::angleAxis(ofDegToRad(eulerAngles.y), glm::vec3(0, 1, 0)));
 }
 
 //----------------------------------------

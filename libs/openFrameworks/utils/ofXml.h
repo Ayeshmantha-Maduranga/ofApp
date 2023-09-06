@@ -250,40 +250,24 @@ public:
 	}
 
 	const ofXmlIterator& operator++(){
-		if( std::is_same<Base, pugi::xml_named_node_iterator>::value ){
-			this->xml = xml.getNextSibling( xml.getName() );
-		}else{
-			this->xml = xml.getNextSibling();
-		}
+		this->xml = xml.getNextSibling();
 		return *this;
 	}
 
 	ofXmlIterator operator++(int){
 		auto now = xml;
-		if( std::is_same<Base, pugi::xml_named_node_iterator>::value ){
-			this->xml = xml.getNextSibling( xml.getName() );
-		}else{
-			this->xml = xml.getNextSibling();
-		}
+		this->xml = xml.getNextSibling();
 		return now;
 	}
 
 	const ofXmlIterator& operator--(){
-		if( std::is_same<Base, pugi::xml_named_node_iterator>::value ){
-			this->xml = xml.getPreviousSibling( xml.getName() );
-		}else{
-			this->xml = xml.getPreviousSibling();
-		}
+		this->xml = xml.getPreviousSibling();
 		return *this;
 	}
 
 	ofXmlIterator operator--(int){
 		auto now = xml;
-		if( std::is_same<Base, pugi::xml_named_node_iterator>::value ){
-			this->xml = xml.getPreviousSibling( xml.getName() );
-		}else{
-			this->xml = xml.getPreviousSibling();
-		}
+		this->xml = xml.getPreviousSibling();
 		return now;
 	}
 	typedef It Base;

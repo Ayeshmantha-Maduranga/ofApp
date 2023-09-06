@@ -36,10 +36,10 @@ inline bool ofSaveJson(const std::filesystem::path& filename, const ofJson & jso
 	try{
 		jsonFile << json;
 	}catch(std::exception & e){
-		ofLogError("ofSaveJson") << "Error saving json to " << filename.string() << ": " << e.what();
+		ofLogError("ofLoadJson") << "Error saving json to " << filename.string() << ": " << e.what();
 		return false;
 	}catch(...){
-		ofLogError("ofSaveJson") << "Error saving json to " << filename.string();
+		ofLogError("ofLoadJson") << "Error saving json to " << filename.string();
 		return false;
 	}
 	return true;
@@ -54,10 +54,10 @@ inline bool ofSavePrettyJson(const std::filesystem::path& filename, const ofJson
     try{
         jsonFile << json.dump(4);
     }catch(std::exception & e){
-        ofLogError("ofSavePrettyJson") << "Error saving json to " << filename.string() << ": " << e.what();
+        ofLogError("ofLoadJson") << "Error saving json to " << filename.string() << ": " << e.what();
         return false;
     }catch(...){
-        ofLogError("ofSavePrettyJson") << "Error saving json to " << filename.string();
+        ofLogError("ofLoadJson") << "Error saving json to " << filename.string();
         return false;
     }
     return true;

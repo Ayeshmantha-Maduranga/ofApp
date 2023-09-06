@@ -168,7 +168,7 @@ Module{
             }else if(platform==="android"){
                libsexceptions =  [
                     "glfw",
-                    "fmod",
+                    "fmodex",
                     "glew",
                     "kiss",
                     "rtAudio",

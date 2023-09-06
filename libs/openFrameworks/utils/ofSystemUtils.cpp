@@ -362,9 +362,7 @@ ofFileDialogResult ofSystemLoadDialog(string windowTitle, bool bFolderSelection,
 		[loadDialog setResolvesAliases:YES];
 
 		if(!windowTitle.empty()) {
-			// changed from setTitle to setMessage
-			// https://stackoverflow.com/questions/36879212/title-bar-missing-in-nsopenpanel
-			[loadDialog setMessage:[NSString stringWithUTF8String:windowTitle.c_str()]];
+			[loadDialog setTitle:[NSString stringWithUTF8String:windowTitle.c_str()]];
 		}
 
 		if(!defaultPath.empty()) {
