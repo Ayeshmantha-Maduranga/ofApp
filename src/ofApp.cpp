@@ -8,19 +8,19 @@ void ofApp::setup(){
     
     ofSetFrameRate(60); // if vertical sync is off, we can go a bit fast... this caps the framerate at 60fps.
     
-    player.loadMovie("test.mp4");
-    player.play();
+    // player.loadMovie("test.mp4");
+    // player.play();
     
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    player.update();
+    // player.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    player.draw(0,0);
+    // player.draw(0,0);
 }
 
 

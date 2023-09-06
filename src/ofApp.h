@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxVLCVideoPlayer.h"
+// #include "ofxVLCVideoPlayer.h"
 
 class ofApp : public ofBaseApp{
     
@@ -21,7 +21,7 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    ofxVLCVideoPlayer player;
+    // ofxVLCVideoPlayer player;
     
 };
 

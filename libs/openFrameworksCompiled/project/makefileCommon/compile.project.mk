@@ -432,9 +432,11 @@ endif
 after: $(TARGET_NAME)
 	@if [ -e $(OF_LIBS_PATH)/*/lib/$(PLATFORM_LIB_SUBPATH)/*.$(SHARED_LIB_EXTENSION) ]; then cp $(OF_LIBS_PATH)/*/lib/$(PLATFORM_LIB_SUBPATH)/*.$(SHARED_LIB_EXTENSION) bin/; fi
 	@echo
-	@echo "     compiling done"
+	@echo "      ----- compiling done ----"
 	@echo "     to launch the application"
 	@echo
+	@echo "  authentication by ayeshmantha.me"
+	@echo "    to launch the application"
 	@echo "     cd bin"
 	@echo "     ./$(BIN_NAME)"
 	@echo "     "
@@ -442,6 +444,16 @@ after: $(TARGET_NAME)
 	@echo "     "
 	@echo "     $(MAKE) $(RUN_TARGET)"
 	@echo
+	@echo "           cd bin"
+	@echo "          ./$(BIN_NAME)"
+	@echo "           - or -"
+	@echo "      $(MAKE) $(RUN_TARGET)"
+	@echo
+	@echo "if you are run the code using SSH, use this first"
+	@echo "         export DISPLAY=0"
+	@echo 
+
+
 
 copyaddonsdata:
 	@echo
